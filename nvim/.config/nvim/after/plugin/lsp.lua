@@ -3,15 +3,15 @@ lsp.preset("recommended")
 
 
     -- Fix undefined global 'vim'
-lsp.configure('sumneko_lua', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
+-- lsp.configure('sumneko_lua', {
+--     settings = {
+--         Lua = {
+--             diagnostics = {
+--                 globals = { 'vim' }
+--             }
+--         }
+--     }
+-- })
 
 -- local cmp = require('cmp')
 -- local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -63,6 +63,13 @@ lsp.on_attach(function(client, bufnr)
 -- 	mapping = cmp_mapping
 -- })
 
+require('lspconfig').clangd.setup({
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+    }
+})
 
 lsp.setup()
 
