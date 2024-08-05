@@ -128,8 +128,9 @@ export VISUAL='/usr/bin/nvim'
 export editor='/usr/bin/nvim'
 export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION="python"
 export PYENV_ROOT=$HOME/.pyenv
-export ALLGON_PLUGIN_SDK=$HOME/tr-source/ALLGON_SDK/
-export TRAB_DIR_INTERCHANGE_V1=$HOME/tr-source/SW0053-01-AllgonSDK-0.0.4-beta/data
+export ALLGON_PLUGIN_SDK=~/dev/ALLGON_SDK/
+export TRAB_DIR_INTERCHANGE_V1=$HOME/dev/TRAB_INTERCHANGE_DIR
+export TRAB_GIT_ROOT=$HOME/dev/
 # My aliases!
 
 #GIT
@@ -143,7 +144,7 @@ alias get_idf4.4='. ~/esp/esp-idf4.4.4/export.sh'
 alias get_idf='. ~/esp/esp-idf/export.sh'
 alias bfm='idf.py build flash monitor'
 alias sfm='sleep 3 && idf.py flash monitor' #I use this when programming the TR818 prototype board
-alias venv='. ./venv/bin/activate'
+alias venv='. ./bin/activate'
 alias venvtrablib='. /home/vilhelm/dev/rd/src/SW/SW0026-PC_Software/44-TextFlasherIII/venv/bin/activate'
 #TELE_RADIO_SW
 # alias tf='/opt/tf3/tf3'
@@ -152,4 +153,53 @@ alias f='cd $(find * -type d | fzf)'
 #MISC
 alias py='python3'
 alias vi='nvim'
-. "$HOME/.cargo/env"
+alias explorer="nautilus --browser ."
+
+
+export PATH="/home/vilhelm/.local/bin:$PATH"
+export PATH="/opt/trab/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Load pyenv-virtualenv automatically by adding
+# the following to ~/.bashrc:
+eval "$(pyenv virtualenv-init -)"
+
+
+
+#Fix SM7 MESA LOADER issues
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
+
+# Change cd to use pushd, and alias popd to "back"
+pushd()
+{
+  if [ $# -eq 0 ]; then
+    DIR="${HOME}"
+  else
+    DIR="$1"
+  fi
+
+  builtin pushd "${DIR}" > /dev/null
+  echo -n "DIRSTACK: "
+  dirs
+}
+
+pushd_builtin()
+{
+  builtin pushd > /dev/null
+  echo -n "DIRSTACK: "
+  dirs
+}
+
+popd()
+{
+  builtin popd > /dev/null
+  echo -n "DIRSTACK: "
+  dirs
+}
+
+alias cd='pushd'
+alias back='popd'
+alias flip='pushd_builtin'
+
