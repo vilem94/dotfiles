@@ -7,10 +7,10 @@ return require('packer').startup(function(use)
 	  -- Packer can manage itself
 	  use 'wbthomason/packer.nvim'
       -- use({"notomo/gesture.nvim"})
-      use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-      setup = function() vim.g.mkdp_filetypes = { "markdown", "MD" , "md" } end,
-      ft = { "markdown" }, })
-
+      -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+      -- setup = function() vim.g.mkdp_filetypes = { "markdown", "MD" , "md" } end,
+      -- ft = { "markdown" }, })
+      use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
       use({
           'sainnhe/gruvbox-material',
           as = 'gruvbox-material',
@@ -18,6 +18,10 @@ return require('packer').startup(function(use)
               vim.cmd('colorscheme gruvbox-material')
           end
       })
+    -- use({
+    --     "iamcco/markdown-preview.nvim",
+    --     run = function() vim.fn["mkdp#util#install"]() end,
+    -- })
       use {
           'nvim-telescope/telescope.nvim',
 	   -- tag = '0.1.4',
@@ -33,8 +37,11 @@ return require('packer').startup(function(use)
         "ahmedkhalf/project.nvim",
         config = function()
             require("project_nvim").setup({
-                detection_methods = { "pattern" },
+                manual_mode = true,
+                detection_methods = { "lsp","pattern", },
+                silent_chdir = false,
                 ignore_lsp = {"docker-compose-language-service"},
+                scope_chdir = 'win',
 
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
@@ -104,7 +111,10 @@ return require('packer').startup(function(use)
               {'hrsh7th/cmp-nvim-lua'},
 
               -- Snippets
-              {'L3MON4D3/LuaSnip'},
+              {
+                  'L3MON4D3/LuaSnip',
+                  dependencies = { "rafamadriz/friendly-snippets" }
+              },
               {'rafamadriz/friendly-snippets'},
           }
       }
@@ -120,6 +130,7 @@ return require('packer').startup(function(use)
       use('nvim-treesitter/playground')
       use('mbbill/undotree')
       use('preservim/nerdtree')
+      use "rafamadriz/friendly-snippets"
       use {
           'numToStr/Comment.nvim',
           config = function()

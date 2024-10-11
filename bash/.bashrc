@@ -138,10 +138,16 @@ alias uncommit="git reset HEAD~1"
 alias recommit="git commit --amend --no-edit"
 alias editcommit="git commit --amend"
 
+#clipboard
+alias clipboard='xclip -sel clip'
 #ESP IDF
 alias get_idf5.0.1='. ~/esp/esp-idf-v5.0.1/export.sh'
 alias get_idf4.4='. ~/esp/esp-idf4.4.4/export.sh'
-alias get_idf='. ~/esp/esp-idf/export.sh'
+alias get_idf5.3.1='. ~/esp/esp-idf5.3.1/export.sh'
+alias get_idf5.1.4='. ~/esp/esp-idf5.1.4/export.sh'
+# alias get_idf='. ~/esp/esp-idf/export.sh'
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+
 alias bfm='idf.py build flash monitor'
 alias sfm='sleep 3 && idf.py flash monitor' #I use this when programming the TR818 prototype board
 alias venv='. ./bin/activate'
@@ -156,12 +162,17 @@ alias vi='nvim'
 alias explorer="nautilus --browser ."
 
 
+#enable z scripts for jumping around faster
+. ~/helper_scripts/z.sh
 export PATH="/home/vilhelm/.local/bin:$PATH"
 export PATH="/opt/trab/bin:$PATH"
+export PATH="/home/vilhelm/helper_scripts/:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
+
+
+eval "$(pyenv init -)"
 # Load pyenv-virtualenv automatically by adding
 # the following to ~/.bashrc:
 eval "$(pyenv virtualenv-init -)"
