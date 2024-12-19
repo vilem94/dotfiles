@@ -5,9 +5,16 @@ telescope.setup {
 
     pickers = {
         find_files = {
-            hidden = true
+            hidden = true,
+            mappings = {
+                i = { ["<c-f>"] = require('telescope.actions').to_fuzzy_refine },
+            },
         },
+
         live_grep = {
+            mappings = {
+                i = { ["<c-f>"] = require('telescope.actions').to_fuzzy_refine },
+            },
             hidden = true,
             additional_args = function(opts)
                 return {"--hidden"}
