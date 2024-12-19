@@ -6,6 +6,7 @@ vim.opt.tabstop=4
 vim.opt.softtabstop=4
 vim.opt.shiftwidth=4
 vim.opt.expandtab=true
+vim.opt.scrollback=40000
 
 
 vim.opt.smartindent=true
@@ -35,10 +36,8 @@ vim.opt.encoding="UTF-8"
 vim.opt.mouse="a"
 vim.opt.colorcolumn="80"
 vim.opt.signcolumn="yes"
-
 -- vim.opt.clipboard="unnamedplus"
 
 vim.g.mapleader = " "
 
-
-
+vim.g.python3_host_prog = "~/.pyenv/versions/nvim/bin/python"
