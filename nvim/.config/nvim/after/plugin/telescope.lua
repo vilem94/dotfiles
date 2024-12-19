@@ -19,6 +19,7 @@ telescope.setup {
             additional_args = function(opts)
                 return {"--hidden"}
             end
+
         },
         grep_string = {
             hidden = true,
@@ -36,4 +37,5 @@ vim.keymap.set('n', '<leader>fd', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>ft', builtin.treesitter, {})
+vim.keymap.set('n', '<leader>fq', builtin.quickfix, {})
 
