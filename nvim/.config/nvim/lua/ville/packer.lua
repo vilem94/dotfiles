@@ -6,6 +6,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 	  -- Packer can manage itself
 	  use 'wbthomason/packer.nvim'
+
       -- use({"notomo/gesture.nvim"})
       -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
       -- setup = function() vim.g.mkdp_filetypes = { "markdown", "MD" , "md" } end,
@@ -29,6 +30,7 @@ return require('packer').startup(function(use)
           requires = { {'nvim-lua/plenary.nvim'} }
 
       }
+
 	use({
 	    "stevearc/oil.nvim",
 	  })
@@ -37,11 +39,11 @@ return require('packer').startup(function(use)
         "ahmedkhalf/project.nvim",
         config = function()
             require("project_nvim").setup({
-                manual_mode = true,
+                manual_mode = false,
                 detection_methods = { "lsp","pattern", },
                 silent_chdir = false,
                 ignore_lsp = {"docker-compose-language-service"},
-                scope_chdir = 'win',
+                scope_chdir = 'tab',
 
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
@@ -109,6 +111,8 @@ return require('packer').startup(function(use)
               {'saadparwaiz1/cmp_luasnip'},
               {'hrsh7th/cmp-nvim-lsp'},
               {'hrsh7th/cmp-nvim-lua'},
+              {'hrsh7th/cmp-cmdline'},
+
 
               -- Snippets
               {
