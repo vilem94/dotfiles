@@ -72,11 +72,37 @@ require('lspconfig').clangd.setup({
 })
 
 
-require'lspconfig'.pyright.setup{}
+lspconfig = require('lspconfig')
 
+lspconfig.pylsp.setup {
+on_attach = custom_attach,
+settings = {
+    pylsp = {
+    plugins = {
+        -- formatter options
+        black = { enabled = true },
+        autopep8 = { enabled = false },
+        yapf = { enabled = false },
+        flake8 = { enabled = true, executable = "pflake8"},
+        -- linter options
+        pylint = { enabled = false, executable = "pylint" },
+        pyflakes = { enabled = false},
+        pycodestyle = { enabled = false },
+        -- type checker
+        pylsp_mypy = { enabled = true },
+        -- auto-completion options
+        jedi_completion = { fuzzy = true },
+        -- import sorting
+        pyls_isort = { enabled = true },
+    },
+    },
+},
+flags = {
+    debounce_text_changes = 200
+},
+capabilities = capabilities,
+}
 
-
-lsp.setup()
 
 
 vim.diagnostic.config({
