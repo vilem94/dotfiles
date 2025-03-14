@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
         config = function()
             require("project_nvim").setup({
                 manual_mode = false,
-                detection_methods = { "lsp","pattern", },
+                detection_methods = { "lsp"},
                 silent_chdir = false,
                 ignore_lsp = {"docker-compose-language-service"},
                 scope_chdir = 'tab',
