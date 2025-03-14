@@ -12,6 +12,8 @@ return require('packer').startup(function(use)
       -- setup = function() vim.g.mkdp_filetypes = { "markdown", "MD" , "md" } end,
       -- ft = { "markdown" }, })
       use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+      use({"python-lsp/pylsp-mypy"})
+
       use({
           'sainnhe/gruvbox-material',
           as = 'gruvbox-material',

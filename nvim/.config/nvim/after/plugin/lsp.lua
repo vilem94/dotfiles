@@ -89,7 +89,7 @@ settings = {
         pyflakes = { enabled = false},
         pycodestyle = { enabled = false },
         -- type checker
-        pylsp_mypy = { enabled = true },
+        pylsp_mypy = { enabled = true, executable = "pylsp-mypy"},
         -- auto-completion options
         jedi_completion = { fuzzy = true },
         -- import sorting
