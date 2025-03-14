@@ -118,25 +118,29 @@ fi
 
 
 
+
 #Enviroment variabels
 
-PYTHON_CONFIGURE_OPTS="--enable-shared"
-# export PATH=$HOME/.pyenv/libexec:$PATH
-# eval "$(pyenv init -)"
 export EDITOR='/usr/bin/nvim'
 export VISUAL='/usr/bin/nvim'
 export editor='/usr/bin/nvim'
 export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION="python"
-export PYENV_ROOT=$HOME/.pyenv
 export ALLGON_PLUGIN_SDK=~/dev/ALLGON_SDK/
 export TRAB_DIR_INTERCHANGE_V1=$HOME/dev/TRAB_INTERCHANGE_DIR
 export TRAB_GIT_ROOT=$HOME/dev/
 # My aliases!
 
+
+alias lynx="lynx -cfg ~/lynx.cfg"
 #GIT
 alias uncommit="git reset HEAD~1"
 alias recommit="git commit --amend --no-edit"
 alias editcommit="git commit --amend"
+
+alias run="rofi -show run -normal-window"
+
+# displaylink
+alias fix-screen='sudo systemctl restart displaylink-driver.service'
 
 #clipboard
 alias clipboard='xclip -sel clip'
@@ -145,12 +149,13 @@ alias get_idf5.0.1='. ~/esp/esp-idf-v5.0.1/export.sh'
 alias get_idf4.4='. ~/esp/esp-idf4.4.4/export.sh'
 alias get_idf5.3.1='. ~/esp/esp-idf5.3.1/export.sh'
 alias get_idf5.1.4='. ~/esp/esp-idf5.1.4/export.sh'
+alias get_idf5.2='. ~/esp/esp-idf5.2/export.sh'
 # alias get_idf='. ~/esp/esp-idf/export.sh'
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
 
 alias bfm='idf.py build flash monitor'
 alias sfm='sleep 3 && idf.py flash monitor' #I use this when programming the TR818 prototype board
-alias venv='. ./bin/activate'
+alias venv='. ./venv/bin/activate'
 alias venvtrablib='. /home/vilhelm/dev/rd/src/SW/SW0026-PC_Software/44-TextFlasherIII/venv/bin/activate'
 #TELE_RADIO_SW
 # alias tf='/opt/tf3/tf3'
@@ -161,19 +166,14 @@ alias py='python3'
 alias vi='nvim'
 alias explorer="nautilus --browser ."
 
-
 #enable z scripts for jumping around faster
 . ~/helper_scripts/z.sh
-export PATH="/home/vilhelm/.local/bin:$PATH"
-export PATH="/opt/trab/bin:$PATH"
-export PATH="/home/vilhelm/helper_scripts/:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+
+
 # if [ "$SHLVL" = 1 ]; then -> This makes sure we dont export paths again when launching a subshell.
 # This is intenden to allow nvim to use the python venv it's launched in, see this reddit post
 # https://www.reddit.com/r/neovim/comments/ga0s7w/use_python_venv_with_neovim/
 if [ "$SHLVL" = 1 ]; then
-    export PATH="/foo/bin:/bar/bin:$PATH"
     export PATH="/home/vilhelm/.local/bin:$PATH"
     export PATH="/opt/trab/bin:$PATH"
     export PATH="/home/vilhelm/helper_scripts/:$PATH"
@@ -181,17 +181,8 @@ if [ "$SHLVL" = 1 ]; then
     [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 fi
 
-
-
-eval "$(pyenv init -)"
-# Load pyenv-virtualenv automatically by adding
-# the following to ~/.bashrc:
-eval "$(pyenv virtualenv-init -)"
-
-
-
 #Fix SM7 MESA LOADER issues
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
+export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libstdc++.so.6"
 
 # Change cd to use pushd, and alias popd to "back"
 pushd()
@@ -225,3 +216,6 @@ alias cd='pushd'
 alias back='popd'
 alias flip='pushd_builtin'
 
+cleanpip() {
+    pip freeze | cut -d "@" -f1 | xargs pip uninstall -y
+}
