@@ -56,3 +56,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
+-- Run current python file with uv run
+vim.api.nvim_set_keymap("n", "<leader>pp", "<cmd>!uv run %<CR>", { noremap = false, silent = true })
+
