@@ -1,6 +1,7 @@
 local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
+require'lspconfig'.marksman.setup{}
 
     -- Fix undefined global 'vim'
 -- lsp.configure('sumneko_lua', {
