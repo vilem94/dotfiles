@@ -84,6 +84,11 @@ lspconfig.pylsp.setup {
     },
 }
 
+lspconfig.dockerls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 
 -- Lua LSP (if you need it)
 lspconfig.lua_ls.setup {
