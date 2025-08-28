@@ -173,13 +173,14 @@ alias explorer="nautilus --browser ."
 # if [ "$SHLVL" = 1 ]; then -> This makes sure we dont export paths again when launching a subshell.
 # This is intenden to allow nvim to use the python venv it's launched in, see this reddit post
 # https://www.reddit.com/r/neovim/comments/ga0s7w/use_python_venv_with_neovim/
-if [ "$SHLVL" = 1 ]; then
-    export PATH="/home/vilhelm/.local/bin:$PATH"
-    export PATH="/opt/trab/bin:$PATH"
-    export PATH="/home/vilhelm/helper_scripts/:$PATH"
-    export PYENV_ROOT="$HOME/.pyenv"
-    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-fi
+#
+# if [ "$SHLVL" = 1 ]; then
+export PATH="/home/vilhelm/.local/bin:$PATH"
+export PATH="/opt/trab/bin:$PATH"
+export PATH="/home/vilhelm/helper_scripts/:$PATH"
+#     export PYENV_ROOT="$HOME/.pyenv"
+    # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# fi
 
 #Fix SM7 MESA LOADER issues
 export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libstdc++.so.6"
