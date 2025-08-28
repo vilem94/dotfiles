@@ -127,7 +127,13 @@ export editor='/usr/bin/nvim'
 export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION="python"
 export ALLGON_PLUGIN_SDK=~/dev/ALLGON_SDK/
 export TRAB_DIR_INTERCHANGE_V1=$HOME/dev/TRAB_INTERCHANGE_DIR
-export TRAB_GIT_ROOT=$HOME/dev/
+export TRAB_GIT_ROOT=$HOME/dev/rd
+export TCL_LIBRARY=/usr/lib/tcl8.6
+export TK_LIBRARY=/usr/lib/tk8.6
+export ALLHIL_LOCAL_DIR=~/dev/CI/AllgonHILtestingLib
+export USE_LOCAL_ALLHIL=1
+export REMOTE_USER=allgon
+
 # My aliases!
 
 
